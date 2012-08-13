@@ -41,7 +41,7 @@
 		}
 		
 		function getValuesFromXML() {
-			
+
 			$xml_location = $this->get('xml_location');
 			$cache_life = (int)$this->get('cache');
 			
@@ -112,14 +112,23 @@
 		}
 		
 		function getSelectedLabels($data = null) {
-			$states = $this->getValuesFromXML();
+		
+			// $states = $this->getValuesFromXML();
+
 			$selected = array();
-			
+
 			if(!is_array($data['value'])) $data['value'] = array($data['value']);
 			
-			foreach($states as $state){
-				if (in_array($state['value'], $data['value'])) $selected[$state['value']] = $state['text'];
+			// foreach($states as $state){
+				// if (in_array($state['value'], $data['value'])) $selected[$state['value']] = $state['text'];
+			// }
+			
+			foreach ($data['value'] as $value)
+			{
+				$selected[$value] = $value;
 			}
+			
+			
 			return $selected;
 		}
 
@@ -158,7 +167,6 @@
 			if(!is_array($value)) $value = array($value);
 			
 			$labels = $this->getSelectedLabels($data);
-			
 			return parent::prepareTableValue(array('value' => @implode(', ', $labels)), $link);
 			
 		}
