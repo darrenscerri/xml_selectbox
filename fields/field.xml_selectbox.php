@@ -123,6 +123,7 @@
 				// if (in_array($state['value'], $data['value'])) $selected[$state['value']] = $state['text'];
 			// }
 			
+			// Do not re-query the XML, but use the stored values
 			foreach ($data['value'] as $value)
 			{
 				$selected[$value] = $value;
